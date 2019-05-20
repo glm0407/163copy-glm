@@ -12,7 +12,8 @@
       </span>
       <span>分类</span>
     </li>
-    <li :class="{on:$route.path==='/discover'}" @click="goto('/discover')">
+    <li :class="{on:$route.path==='/discover'||$route.path==='/discover/recommond'||$route.path==='/discover/commont'}"
+        @click="goto('/discover/recommond')">
       <span class="item_icon">
         <i class="iconfont icontupian"></i>
       </span>
@@ -55,9 +56,11 @@
     height 100px
     font-size 24px
     display flex
+    overflow hidden
     justify-content space-around
     background-color #fff
     margin-top -100px
+    z-index 100
     li
       display flex
       flex-direction column

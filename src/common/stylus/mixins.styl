@@ -15,6 +15,16 @@ bottom-border-1px($color)
     height 1px
     background-color $color
     transform scaleY(0.5)
+bottom-border-4px($color)
+  &:after
+    content ''
+    position absolute
+    left 0
+    bottom 0
+    width 100%
+    height 6px
+    background-color $color
+    transform scaleY(0.5)
 
 // 一像素上边框
 top-border-1px($color)

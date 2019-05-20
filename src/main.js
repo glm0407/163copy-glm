@@ -5,6 +5,9 @@ import VueRouter from 'vue-router'
 import router from './router'
 import Split from './components/Split/Split'
 import headerSlot from './components/headerSlot/headerSlot'
+import store from './store/index'
+import './mockData/mockServer.js'
+import 'lib-flexible/flexible'
 import './validata'
 Vue.use(VueRouter)
 Vue.config.productionTip = false
@@ -15,5 +18,6 @@ new Vue({
   el: '#app',
   components: { App },
   template: '<App/>',
-  router
+  router,
+  store
 })

@@ -35,7 +35,8 @@
     display flex
     align-items center
     justify-content space-between
-    background-color: #fafafa
+    background-color:white
+    z-index 10
     .left_box
       margin-left 24px
       i

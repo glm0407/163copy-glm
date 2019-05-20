@@ -76,6 +76,8 @@
     position relative
     height 100%
     .main_body
+      position absolute
+      top 88px
       height 1335px
       background #f2f5f4
       .login_logo

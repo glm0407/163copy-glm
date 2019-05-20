@@ -53,6 +53,8 @@
 
   .email_login_box
     background-color: #fff
+    position relative
+    top 88px
     .top_logo
       width 100%
       height 133px

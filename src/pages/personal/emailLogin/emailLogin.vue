@@ -51,6 +51,8 @@
   @import "../../../common/stylus/mixins.styl"
 
   .email_login_box
+    position relative
+    top 88px
     background-color: #fff
     .top_logo
       width 100%
