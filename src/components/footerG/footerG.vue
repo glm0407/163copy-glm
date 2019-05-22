@@ -59,7 +59,7 @@
     overflow hidden
     justify-content space-around
     background-color #fff
-    margin-top -100px
+    margin-top -300px
     z-index 100
     li
       display flex

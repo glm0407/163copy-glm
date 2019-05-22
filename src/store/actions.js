@@ -1,6 +1,6 @@
-import {reqTabs,reqRecommend,reqCatagory,reqHomeData} from '../api'
+import {reqTabs,reqRecommend,reqCatagory,reqHomeData,reqComment} from '../api'
 
-import {REQTABS_NAME,REQRECOMMEND_DATA,CATEGORYDATA_,HOME_DATA} from './mutation-types'
+import {REQTABS_NAME,REQRECOMMEND_DATA,CATEGORYDATA_,HOME_DATA,COMMENTDATA_} from './mutation-types'
 
 export default {
   //获取识物导航栏信息
@@ -35,6 +35,14 @@ export default {
     const homeData = result.data
     if(result.code === 0){
       commit(HOME_DATA,{homeData})
+    }
+  },
+  async getComment({commit}){
+    const result = await reqComment()
+
+    if(result.code==='200'){
+      const resdata = result.data
+      commit(COMMENTDATA_,resdata)
     }
   }
 

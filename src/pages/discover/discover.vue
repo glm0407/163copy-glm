@@ -25,7 +25,6 @@
 
 <script>
   import BScroll from 'better-scroll'
-  import {reqRecommend,reqTabs} from '../../api'
   import {mapState} from 'vuex'
   export default {
     name: 'discover',
@@ -60,12 +59,12 @@
             break
           }
           case 7: {    // 晒单
-            this.$router.replace("/discover/recommond");
+            this.$router.replace("/discover/commont");
             break
           }
           case 4: {    // 达人
             // this.$router.replace("/things/superbuyer");
-            this.$router.replace("/discover/recommond");
+            this.$router.replace("/discover/commont");
             break
           }
           case 6: {    // HOME
@@ -107,8 +106,10 @@
       height 75px
       font-size 28px
       color #333
+      margin-bottom 80px
       bottom-border-1px(#999)
       display flex
+      z-index 10
       >ul
         height 100%
         white-space nowrap

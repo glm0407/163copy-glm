@@ -4,35 +4,15 @@
       <div class="life">
         <span>让生活更好的n种方式</span>
       </div>
-      <div class="cute">
-        <span>可爱值max的严选萌物</span>
+      <div class="cute" v-if="commentData">
+        <span>{{commentData.title}}</span>
       </div>
       <div class="picture_wrap">
         <ul>
-          <li>
-            <img data-v-414248e1="" src="https://yanxuan.nosdn.127.net/2e34ecc627ada4cbf5b82791a6cbb83a.jpg" alt="BetterLife" data-src="https://yanxuan.nosdn.127.net/2e34ecc627ada4cbf5b82791a6cbb83a.jpg" lazy="loaded">
+          <li v-for="(item,index) in commentData.lookList" :key="index">
+            <img v-lazy="item.banner.picUrl">
           </li>
-          <li>
-            <img data-v-414248e1="" src="https://yanxuan.nosdn.127.net/1c4b26e112bef898ff8e159310af0660.jpg" alt="BetterLife" data-src="https://yanxuan.nosdn.127.net/1c4b26e112bef898ff8e159310af0660.jpg" lazy="loaded">
-          </li>
-          <li>
-            <img data-v-414248e1="" src="https://yanxuan.nosdn.127.net/2e34ecc627ada4cbf5b82791a6cbb83a.jpg" alt="BetterLife" data-src="https://yanxuan.nosdn.127.net/2e34ecc627ada4cbf5b82791a6cbb83a.jpg" lazy="loaded">
-          </li>
-          <li>
-            <img data-v-414248e1="" src="https://yanxuan.nosdn.127.net/1c4b26e112bef898ff8e159310af0660.jpg" alt="BetterLife" data-src="https://yanxuan.nosdn.127.net/1c4b26e112bef898ff8e159310af0660.jpg" lazy="loaded">
-          </li>
-          <li>
-            <img data-v-414248e1="" src="https://yanxuan.nosdn.127.net/2e34ecc627ada4cbf5b82791a6cbb83a.jpg" alt="BetterLife" data-src="https://yanxuan.nosdn.127.net/2e34ecc627ada4cbf5b82791a6cbb83a.jpg" lazy="loaded">
-          </li>
-          <li>
-            <img data-v-414248e1="" src="https://yanxuan.nosdn.127.net/2e34ecc627ada4cbf5b82791a6cbb83a.jpg" alt="BetterLife" data-src="https://yanxuan.nosdn.127.net/2e34ecc627ada4cbf5b82791a6cbb83a.jpg" lazy="loaded">
-          </li>
-          <li>
-            <img data-v-414248e1="" src="https://yanxuan.nosdn.127.net/2e34ecc627ada4cbf5b82791a6cbb83a.jpg" alt="BetterLife" data-src="https://yanxuan.nosdn.127.net/2e34ecc627ada4cbf5b82791a6cbb83a.jpg" lazy="loaded">
-          </li>
-          <li>
-            <img data-v-414248e1="" src="https://yanxuan.nosdn.127.net/2e34ecc627ada4cbf5b82791a6cbb83a.jpg" alt="BetterLife" data-src="https://yanxuan.nosdn.127.net/2e34ecc627ada4cbf5b82791a6cbb83a.jpg" lazy="loaded">
-          </li>
+
         </ul>
       </div>
     </div>
@@ -84,6 +64,7 @@
 
 <script>
   import BScroll from 'better-scroll'
+  import {mapState} from 'vuex'
   export default {
     name: 'commont',
     mounted () {
@@ -91,6 +72,10 @@
         scrollX:true,
         click:true
       })
+      this.$store.dispatch('getComment')
+    },
+    computed:{
+      ...mapState(['commentData'])
     }
   }
 </script>

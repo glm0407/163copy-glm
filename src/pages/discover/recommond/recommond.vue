@@ -1,62 +1,65 @@
 <template>
-  <div class="wrap">
-    <div class="discover_container">
-      <div class="discover_body_first">
-        <ul>
-          <li>
-            <div class="user">
-              <img data-v-b9fc18ce="" src="https://yanxuan.nosdn.127.net/90e5c3caa8890386424716150338b264.png" alt="" data-src="https://yanxuan.nosdn.127.net/90e5c3caa8890386424716150338b264.png" lazy="loaded">
-              <span>选妹</span>
-            </div>
-            <div class="title">
-              一口价！全部只要9.9、19.9……为了帮你省钱，选妹拼了！
-            </div>
-            <img data-v-b9fc18ce="" src="https://yanxuan.nosdn.127.net/0629916beb7e66d482d4ce305ce4b215.jpg" alt="" data-src="https://yanxuan.nosdn.127.net/0629916beb7e66d482d4ce305ce4b215.jpg" lazy="loaded">
-            <div class="find_person">
-              <span class="iconfont iconyanjing"></span>
-              <span>8979人看过</span>
-            </div>
-          </li>
+  <div>
+    <div class="wrap" v-if="recommendData" v-for="(recommend,index) in recommendData" :key="index">
+      <div class="discover_container"  v-for="(item,index) in recommend.topics" :key="index + Date.now()">
+        <div class="discover_body_first" v-if="item.style===1">
+          <ul>
+            <li>
+              <div class="user">
+                <img v-lazy="item.avatar">
+                <span>{{item.nickname}}</span>
+              </div>
+              <div class="title">
+                {{item.title}}
+              </div>
+              <img v-lazy="item.picUrl">
+              <div class="find_person">
+                <span class="iconfont iconyanjing"></span>
+                <span>{{item.readCount}}人看过</span>
+              </div>
+            </li>
 
-        </ul>
+          </ul>
+
+        </div>
+
+        <div class="discover_body_second" v-if="item.style===2">
+          <ul>
+            <li class="first_li">
+              <div class="user">
+            <span>
+              <img v-lazy="item.avatar">
+            </span>
+                <span>
+             {{item.nickname}}
+            </span>
+              </div>
+              <div class="title">
+            <span>
+              {{item.title}}
+            </span>
+              </div>
+              <div class="discount">
+            <span>
+              {{item.subTitle}}
+            </span>
+              </div>
+              <div class="find_person">
+                <span class="iconfont iconyanjing"></span>
+                <span>{{item.readCount}}人看过</span>
+              </div>
+            </li>
+            <li class="second_li">
+              <img v-lazy="item.picUrl">
+
+            </li>
+
+          </ul>
+
+        </div>
+        <Split></Split>
 
       </div>
-      <Split/>
-      <div class="discover_body_second">
-        <ul>
-          <li class="first_li">
-            <div class="user">
-            <span>
-              <img src="https://yanxuan.nosdn.127.net/8250694e49e4352264c5b8198e0d9575.jpg?imageView&amp;quality=65&amp;thumbnail=56y56" alt="" width="100%" height="100%">
-            </span>
-              <span>
-              网易未央.小周
-            </span>
-            </div>
-            <div class="title">
-            <span>
-              烟台大樱桃熟了，只有这个季节能吃到
-            </span>
-            </div>
-            <div class="discount">
-            <span>
-              烟台大樱桃限时7.1折
-            </span>
-            </div>
-            <div class="find_person">
-              <span class="iconfont iconyanjing"></span>
-              <span>8979人看过</span>
-            </div>
-          </li>
-          <li class="second_li">
-            <img src="https://yanxuan.nosdn.127.net/0fc8c4646c9bf99eaccdf5c89815e00b.jpg?imageView&amp;quality=65&amp;thumbnail=272y272" alt="" width="100%" height="100%">
-
-          </li>
-
-        </ul>
-
-      </div>
-      <Split/>
     </div>
 
   </div>
@@ -68,10 +71,12 @@
   import {mapState} from 'vuex'
   export default {
     name: 'recommond',
-    mounted(){
+    async mounted(){
       new BScroll('.discover_container',{
          click:true
       })
+      await this.$store.dispatch("getRecommend")
+
     },
     computed:{
       ...mapState(['recommendData'])
@@ -88,7 +93,7 @@
       position relative
       width 100%
       float top
-      margin-top 85px
+      margin-top 5px
       display flex
       align-items center
       >ul
@@ -96,7 +101,7 @@
         height 100%
         padding 0 30px
         .user
-          margin-top 50px
+          margin-top 20px
           font-size 28px
           padding-left 30px
           display flex

@@ -3,7 +3,8 @@ import {
   REQRECOMMEND_DATA,
   REQTABS_NAME,
   CATEGORYDATA_,
-  HOME_DATA
+  HOME_DATA,
+  COMMENTDATA_
 } from './mutation-types'
 export default {
   [REQTABS_NAME](state,tabs){
@@ -17,5 +18,8 @@ export default {
   },
   [HOME_DATA](state,{homeData}){
     state.homeData = homeData
+  },
+  [COMMENTDATA_](state,commentData){
+    state.commentData = commentData
   }
 }

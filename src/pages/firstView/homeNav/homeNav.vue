@@ -24,27 +24,30 @@
           <li>数码家电</li>
         </ul>
       </div>
-      <div class="jiantou">
+      <div class="jiantou"  @click="isShow=!isShow">
         <div class="img_nav">
-          <img data-v-c94ea186="" src="http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/arrow-down-3-799ded53ea.png" alt="展开" class="">
+          <img :class="{on:isShow}" data-v-c94ea186="" src="http://yanxuan-static.nosdn.127.net/hxm/yanxuan-wap/p/20161201/style/img/icon-normal/arrow-down-3-799ded53ea.png" alt="展开" class="">
         </div>
       </div>
-      <div class="mask">
-        <p>全部频道</p>
-        <div class="mask_detail">
-          <ul>
-            <li>推荐</li>
-            <li>居家生活</li>
-            <li>服饰鞋包</li>
-            <li>美食酒水</li>
-            <li>个护清洁</li>
-            <li>限时购</li>
-            <li>母婴亲子</li>
-            <li>运动旅行</li>
-            <li>数码家电</li>
-          </ul>
+      <transition name="mask">
+        <div class="mask" v-show="isShow">
+          <p>全部频道</p>
+          <div class="mask_detail">
+            <ul>
+              <li>推荐</li>
+              <li>居家生活</li>
+              <li>服饰鞋包</li>
+              <li>美食酒水</li>
+              <li>个护清洁</li>
+              <li>限时购</li>
+              <li>母婴亲子</li>
+              <li>运动旅行</li>
+              <li>数码家电</li>
+            </ul>
+          </div>
         </div>
-      </div>
+      </transition>
+
     </header>
   </div>
 
@@ -52,7 +55,13 @@
 
 <script>
   export default {
-    name: 'homeNav'
+    name: 'homeNav',
+    data(){
+      return{
+        isShow:false,
+        isShowOn:false
+      }
+    }
   }
 </script>
 
@@ -69,6 +78,7 @@
     justify-content center
     align-items center
     z-index 10
+    background #fff
     .search
       position absolute
       top 0
@@ -121,6 +131,7 @@
         height 100%
         justify-content space-around
         align-items center
+        padding-right 80px
         >li
           height 100%
           line-height 66px
@@ -146,6 +157,11 @@
         background #fff
         z-index 10
         img
+          transition .3s
+          &.on
+            transform rotateZ(180deg)
+            transition .3s
+        img
           width 28px
           height 28px
     .mask
@@ -153,7 +169,12 @@
       top 72px
       width 100%
       background #fff
-      display none
+      &.mask-enter-active
+        transition all .5s
+      &.mask-leave-active
+        transition all .5s
+      &.mask-enter,&.mask-leave-to
+        opacity 0
       p
         font-size 28px
         height 60px

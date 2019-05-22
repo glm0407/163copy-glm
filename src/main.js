@@ -8,6 +8,9 @@ import headerSlot from './components/headerSlot/headerSlot'
 import store from './store/index'
 import './mockData/mockServer.js'
 import 'lib-flexible/flexible'
+import VueLazyload from 'vue-lazyload'
+import loading from './common/images/loading.gif'
+Vue.use(VueLazyload, {loading})
 import './validata'
 Vue.use(VueRouter)
 Vue.config.productionTip = false

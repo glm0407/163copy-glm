@@ -13,6 +13,7 @@
 
   export default {
     name: 'policy',
+
     computed:{
       ...mapState(['homeData'])
     },

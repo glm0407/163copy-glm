@@ -3,10 +3,7 @@
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <img src="https://yanxuan.nosdn.127.net/bec4a597a9aed55605eeb7c0c7710f9b.jpg?imageView&quality=75&thumbnail=750x0" alt="img">
-        </div>
-        <div class="swiper-slide">
-          <img src="https://yanxuan.nosdn.127.net/981c28d7f7276a2c84bf8c7790a9b559.jpg?imageView&quality=75&thumbnail=750x0" alt="img">
+          <img v-lazy="imgUrl">
         </div>
         <div class="swiper-slide">
           <img src="https://yanxuan.nosdn.127.net/feadfbdcc0e2dea285d92c6740d46c66.jpg?imageView&quality=75&thumbnail=750x0" alt="img">
@@ -28,6 +25,11 @@
   import 'swiper/dist/css/swiper.css'
   export default {
     name: 'swiper',
+    data(){
+      return{
+        imgUrl:'https://yanxuan.nosdn.127.net/bec4a597a9aed55605eeb7c0c7710f9b.jpg?imageView&quality=75&thumbnail=750x0'
+      }
+    },
     mounted () {
       new Swiper('.swiper-container',{
         autoplay:true,

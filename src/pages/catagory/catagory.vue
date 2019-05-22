@@ -20,12 +20,12 @@
         </ul>
       </div>
       <div class="content_right" v-if="categoryData[curIndex]">
-        <div>
-          <img :src="categoryData[curIndex].wapBannerUrl">
+        <div class="content_right_">
+          <img v-lazy="categoryData[curIndex].wapBannerUrl">
           <ul>
             <li v-for="(sub,index) in categoryData[curIndex].subCateList" :key="index">
               <div>
-                <img :src="sub.wapBannerUrl" alt="logo">
+                <img v-lazy="sub.wapBannerUrl" alt="logo">
                 <div>{{sub.name}}</div>
               </div>
             </li>
@@ -49,15 +49,18 @@
     },
     mounted(){
       this.$store.dispatch('getCategory')
-      new BScroll('.nav_left',{
-        click:true
-      })
-      setTimeout(()=>{
-        new BScroll('.content_right',{
+    },
+    watch:{
+      categoryData(){
+        new BScroll('.nav_left',{
           click:true
         })
-      },2000)
-
+        this.$nextTick(() => {
+          new BScroll('.content_right',{
+            click:true
+          })
+        })
+      }
     },
     computed:{
       ...mapState(['categoryData'])
@@ -127,9 +130,11 @@
         right 0
         top 88px
         width 588px
+        height 100%
         display flex
         justify-content center
         div
+          height 1700px
           img
             width 528px
             height 192px
