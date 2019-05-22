@@ -12,7 +12,7 @@
       </ul>
     </div>
     <div class="picture">
-      <img data-v-3bf6d6bb="" src="https://yanxuan.nosdn.127.net/df012027a9bd3c0b0e5779c11b814180.png" alt="bossRecommen">
+      <img data-v-3bf6d6bb="" v-lazy="imgUrl" alt="bossRecommen">
     </div>
   </div>
 </template>
@@ -22,6 +22,11 @@
 
   export default {
     name: 'shopNav',
+    data(){
+      return{
+        imgUrl:'https://yanxuan.nosdn.127.net/df012027a9bd3c0b0e5779c11b814180.png'
+      }
+    },
     computed:{
       ...mapState(['homeData'])
     }

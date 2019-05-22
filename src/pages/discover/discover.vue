@@ -64,7 +64,7 @@
           }
           case 4: {    // 达人
             // this.$router.replace("/things/superbuyer");
-            this.$router.replace("/discover/commont");
+            this.$router.replace("/discover/recommond");
             break
           }
           case 6: {    // HOME
@@ -74,7 +74,7 @@
           }
           default: {
             console.log("Router Switch Error.")
-            this.$router.replace("/discover/recommond");
+            this.$router.replace("/discover/commont");
           }
         }
       },
